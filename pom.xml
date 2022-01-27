@@ -19,7 +19,7 @@
 
 		<spring-webmvc> 5.3.14 </spring-webmvc>
 		<spring-jdbc> 5.3.14 </spring-jdbc>
-		<mysql-connector> 8.0.21 </mysql-connector>
+		<mysql-connector> 5.1.6 </mysql-connector>
 		<javax.servlet>4.0.1</javax.servlet>
 		<jstl>1.2</jstl>
 	</properties>
