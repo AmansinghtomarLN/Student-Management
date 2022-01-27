@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class StudentController {
 
 // both are same or equivalent	
-//	@RequestMapping(value="/showStudent", method=RequestMethod.GET)
+	@RequestMapping(value="/showStudent", method=RequestMethod.GET)
 	@GetMapping("/showStudent")
 	public String showStudentList() {
-		
+
 		return "student-list";
 	}
-	
+
 }
