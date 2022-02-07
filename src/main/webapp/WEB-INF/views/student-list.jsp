@@ -1,5 +1,6 @@
+<%@ taglib prefix="j" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<center> 
-<h1> Data Coming soon</h1>
-${students}
-
-</center>
+	<center>
+		<h1>Data Coming soon</h1>
+		<!-- Model attritube: students -->
+		<!-- Iterating using JSTL -->
+		<!--Internally gettterMethod() is getting called : stu.id  -->
+		<table border="">
+			<tr>
+				<td>S.No</td>
+				<td>Name</td>
+				<td>Mobile</td>
+				<td>Country</td>
+			</tr>
+		
+		<j:forEach var="stu" items="${students}">
+<tr> 
+<td> ${stu.id} </td>
+<td> ${stu.name} </td>
+<td> ${stu.mobile} </td>
+<td> ${stu.country} </td>
+</tr>
+		</j:forEach>
+</table>
+	</center>
 </body>
 </html>
