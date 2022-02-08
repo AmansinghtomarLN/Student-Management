@@ -7,4 +7,5 @@ import com.stumgmt.dto.StudentsDTO;
 public interface StudentDAO {
 
 	List<StudentsDTO>loadStudent();
+	void saveStudent(StudentsDTO dto);
 }

@@ -28,4 +28,12 @@ public class StudentDaoImpl implements StudentDAO {
 			System.out.println(stu);
 		}
 	}
+
+	@Override
+	public void saveStudent(StudentsDTO dto) {
+		String sql = "insert into students(name, mobile,country)values(?,?,?) ";
+		Object[] args = {dto.getName(), dto.getMobile(), dto.getCountry()};
+		jdbcTemplate.update(sql, args);
+		System.out.println("Student Record Saved");
+	}
 }

@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.stumgmt.dao.StudentDAO;
 import com.stumgmt.dto.StudentsDTO;
 
@@ -24,6 +26,21 @@ public class StudentController {
 		List<StudentsDTO> studentList = StudentDAO.loadStudent();
 		model.addAttribute("students", studentList);
 		return "student-list";
+	}
+
+	@RequestMapping(value = "/showAddStudentPage", method = RequestMethod.GET)
+	public String showAddStudentPage(Model model) {
+		model.addAttribute("student", new StudentsDTO());
+		return "add-student";
+	}
+
+	// @ResponseBody
+	@RequestMapping(value = "/save-student", method = RequestMethod.GET)
+	public String saveStudent(StudentsDTO dto, Model model) {
+		System.out.println(dto);
+		StudentDAO.saveStudent(dto);
+		model.addAttribute("student", dto);
+		return "add-student";
 	}
 
 }

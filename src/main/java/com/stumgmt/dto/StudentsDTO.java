@@ -3,7 +3,7 @@ package com.stumgmt.dto;
 public class StudentsDTO {
 
 	private int id;
-	private String name;
+	private String name = "Aman";
 	private long mobile;
 	private String country;
 	public int getId() {
