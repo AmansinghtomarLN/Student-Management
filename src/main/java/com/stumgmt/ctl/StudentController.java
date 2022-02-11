@@ -34,13 +34,16 @@ public class StudentController {
 		return "add-student";
 	}
 
-	// @ResponseBody
-	@RequestMapping(value = "/save-student", method = RequestMethod.GET)
+	@RequestMapping(value = "/save-student")
 	public String saveStudent(StudentsDTO dto, Model model) {
 		System.out.println(dto);
 		StudentDAO.saveStudent(dto);
 		model.addAttribute("student", dto);
-		return "add-student";
+		return "redirect:/thank-you"; //PRG - Post Redirect get
 	}
-
-}
+	@ResponseBody
+	@RequestMapping("/thank-you")
+	public String thankYou() {
+		return "Thank you for Registering....";}
+	}
+	
