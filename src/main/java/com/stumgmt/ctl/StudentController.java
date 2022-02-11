@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.stumgmt.dao.StudentDAO;
 import com.stumgmt.dto.StudentsDTO;
+import com.stumgmt.service.StudentService;
 
 @Controller
 public class StudentController {
 
 	@Autowired
-	private StudentDAO StudentDAO;
+	private StudentService studentService;
 
 // both are same or equivalent	
 	@RequestMapping(value = "/showStudent", method = RequestMethod.GET)
 	@GetMapping("/showStudent")
 	public String showStudentList(Model model) {
-		List<StudentsDTO> studentList = StudentDAO.loadStudent();
+		List<StudentsDTO> studentList = studentService.loadStudent();
 		model.addAttribute("students", studentList);
 		return "student-list";
 	}
@@ -37,9 +38,9 @@ public class StudentController {
 	@RequestMapping(value = "/save-student")
 	public String saveStudent(StudentsDTO dto, Model model) {
 		System.out.println(dto);
-		StudentDAO.saveStudent(dto);
+		studentService.saveStudent(dto);
 		model.addAttribute("student", dto);
-		return "redirect:/thank-you"; //PRG - Post Redirect get
+		return "redirect:/thank-you"; //PRG - Post Redirect get	
 	}
 	@ResponseBody
 	@RequestMapping("/thank-you")
