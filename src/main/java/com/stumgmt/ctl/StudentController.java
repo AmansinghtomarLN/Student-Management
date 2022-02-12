@@ -40,14 +40,14 @@ public class StudentController {
 	@RequestMapping(value = "/save-student")
 	public String saveStudent(StudentsDTO dto, Model model) {
 		System.out.println(dto);
-		if(dto.getId()==0) {
+		if (dto.getId() == 0) {
 			studentService.saveStudent(dto);
-		}else {
+		} else {
 			studentService.updateStudent(dto);
 		}
-		
+
 		model.addAttribute("student", dto);
-		return "redirect:/thank-you"; // PRG - Post Redirect get
+		return "redirect:/thank-you"; // PRG - Post Redirect get - mapping url 
 	}
 
 	@ResponseBody
@@ -59,9 +59,17 @@ public class StudentController {
 	@RequestMapping("/updateStudent")
 	public String updateStudent(Model model, @RequestParam("userId") int id) {
 		StudentsDTO student = studentService.getStudent(id);
-		System.out.println("controller : "+student);
+		System.out.println("controller : " + student);
 		model.addAttribute("student", student);
 
 		return "add-student";
 	}
+	
+	
+	@RequestMapping("/deleteStudent")
+	public String deleteStudent(@RequestParam("userId") int id) {
+		studentService.deleteStudent(id);
+		return "redirect:/showStudent";
+	}
+
 }

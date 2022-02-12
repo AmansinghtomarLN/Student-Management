@@ -28,11 +28,13 @@
 <td> ${stu.mobile} </td>
 <td> ${stu.country} </td>
 <td> <a href="/student-management/updateStudent?userId=${stu.id}"> Update</a></td>
+<td> <a href="/student-management/deleteStudent?userId=${stu.id}" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete</a></td>
 
 
 </tr>
 		</j:forEach>
 </table>
+<a href="/student-management/showAddStudentPage">Add User</a>
 	</center>
 </body>
 </html>

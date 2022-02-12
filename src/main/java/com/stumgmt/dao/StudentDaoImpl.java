@@ -52,4 +52,11 @@ public class StudentDaoImpl implements StudentDAO {
 		int result= jdbcTemplate.update(sql, args);
 		System.out.println("Record updated");
 	}
+
+	@Override
+	public void deleteStudent(int id) {
+		String sql = "delete  from students where id=?";
+		jdbcTemplate.update(sql,id);
+		
+	}
 }
