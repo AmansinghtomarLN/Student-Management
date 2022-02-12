@@ -36,4 +36,20 @@ public class StudentDaoImpl implements StudentDAO {
 		jdbcTemplate.update(sql, args);
 		System.out.println("Student Record Saved");
 	}
+
+	@Override
+	public StudentsDTO getStudent(int id) {
+		String sql = "select * from students where id=?";
+		StudentsDTO student = jdbcTemplate.queryForObject(sql,new StudentRowMapper(),id);
+		System.out.println("student record fetched : "+student);
+		return student;
+	}
+
+	@Override
+	public void updateStudent(StudentsDTO dto) {
+		String sql = "update students set name=?, mobile=?,country=? where id=?";
+		Object[] args = {dto.getName(), dto.getMobile(), dto.getCountry(),dto.getId()};
+		int result= jdbcTemplate.update(sql, args);
+		System.out.println("Record updated");
+	}
 }

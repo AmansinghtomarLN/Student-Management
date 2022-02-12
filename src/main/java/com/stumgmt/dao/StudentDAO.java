@@ -8,4 +8,7 @@ public interface StudentDAO {
 
 	List<StudentsDTO>loadStudent();
 	void saveStudent(StudentsDTO dto);
+	StudentsDTO getStudent(int id);
+	void updateStudent(StudentsDTO dto);
+	
 }

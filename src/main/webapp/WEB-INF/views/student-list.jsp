@@ -27,6 +27,9 @@
 <td> ${stu.name} </td>
 <td> ${stu.mobile} </td>
 <td> ${stu.country} </td>
+<td> <a href="/student-management/updateStudent?userId=${stu.id}"> Update</a></td>
+
+
 </tr>
 		</j:forEach>
 </table>

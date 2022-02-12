@@ -11,4 +11,6 @@ public interface StudentService {
 
 	List<StudentsDTO>loadStudent();
 	void saveStudent(StudentsDTO dto);
+	StudentsDTO getStudent(int id);
+	void updateStudent(StudentsDTO dto);
 }

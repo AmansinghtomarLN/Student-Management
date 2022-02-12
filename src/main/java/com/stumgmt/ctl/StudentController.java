@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.stumgmt.dao.StudentDAO;
 import com.stumgmt.dto.StudentsDTO;
 import com.stumgmt.service.StudentService;
+import com.stumgmt.service.StudentServiceImpl;
 
 @Controller
 public class StudentController {
@@ -38,13 +40,28 @@ public class StudentController {
 	@RequestMapping(value = "/save-student")
 	public String saveStudent(StudentsDTO dto, Model model) {
 		System.out.println(dto);
-		studentService.saveStudent(dto);
+		if(dto.getId()==0) {
+			studentService.saveStudent(dto);
+		}else {
+			studentService.updateStudent(dto);
+		}
+		
 		model.addAttribute("student", dto);
-		return "redirect:/thank-you"; //PRG - Post Redirect get	
+		return "redirect:/thank-you"; // PRG - Post Redirect get
 	}
+
 	@ResponseBody
 	@RequestMapping("/thank-you")
 	public String thankYou() {
-		return "Thank you for Registering....";}
+		return "Thank you for Registering....";
 	}
-	
+
+	@RequestMapping("/updateStudent")
+	public String updateStudent(Model model, @RequestParam("userId") int id) {
+		StudentsDTO student = studentService.getStudent(id);
+		System.out.println("controller : "+student);
+		model.addAttribute("student", student);
+
+		return "add-student";
+	}
+}

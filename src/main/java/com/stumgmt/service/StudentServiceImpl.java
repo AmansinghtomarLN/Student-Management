@@ -28,4 +28,15 @@ public class StudentServiceImpl implements StudentService {
 
 	}
 
+	@Override
+	public StudentsDTO getStudent(int id) {
+		StudentsDTO student = studentDAO.getStudent(id);
+		return student;
+	}
+
+	@Override
+	public void updateStudent(StudentsDTO dto) {
+		studentDAO.updateStudent(dto);
+	}
+
 }
